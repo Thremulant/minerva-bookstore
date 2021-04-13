@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_212631) do
+ActiveRecord::Schema.define(version: 2021_04_13_011234) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -18,34 +18,16 @@ ActiveRecord::Schema.define(version: 2021_04_12_212631) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "books", force: :cascade do |t|
-    t.decimal "price", precision: 5, scale: 2
-    t.text "description"
-    t.integer "pages"
-    t.boolean "new"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-  end
+# Could not dump table "books" because of following StandardError
+#   Unknown type 'reference' for column 'author_id'
 
   create_table "books_orders", id: false, force: :cascade do |t|
     t.integer "book_id", null: false
     t.integer "order_id", null: false
-    t.decimal "price", precision: 5, scale: 2
-    t.decimal "pst", precision: 5, scale: 2
-    t.decimal "gst", precision: 5, scale: 2
-    t.decimal "hst", precision: 5, scale: 2
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "address"
-    t.string "postal_code"
-    t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+# Could not dump table "customers" because of following StandardError
+#   Unknown type 'reference' for column 'province_id'
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -59,15 +41,8 @@ ActiveRecord::Schema.define(version: 2021_04_12_212631) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.decimal "subtotal", precision: 5, scale: 2
-    t.decimal "pst", precision: 5, scale: 2
-    t.decimal "gst", precision: 5, scale: 2
-    t.decimal "hst", precision: 5, scale: 2
-    t.decimal "total", precision: 5, scale: 2
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+# Could not dump table "orders" because of following StandardError
+#   Unknown type 'reference' for column 'order_state'
 
   create_table "provinces", force: :cascade do |t|
     t.string "name"

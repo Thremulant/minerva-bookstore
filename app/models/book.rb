@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   belongs_to :genre
   has_and_belongs_to_many :orders
 
-  validates :name, :price, presence: true
-  validates_uniqueness_of :name
-  validates :price, :pages, numericality: true,
+  validates :name, presence: true
+  # validates_uniqueness_of :name
+  # validates :price, :pages, numericality: true
 end
