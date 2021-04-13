@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_011234) do
+ActiveRecord::Schema.define(version: 2021_04_13_013049) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 2021_04_13_011234) do
   create_table "books_orders", id: false, force: :cascade do |t|
     t.integer "book_id", null: false
     t.integer "order_id", null: false
+    t.decimal "book_price", precision: 5, scale: 2
+    t.decimal "pst", precision: 5, scale: 2
+    t.decimal "gst", precision: 5, scale: 2
+    t.decimal "hst", precision: 5, scale: 2
   end
 
 # Could not dump table "customers" because of following StandardError
@@ -42,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_011234) do
   end
 
 # Could not dump table "orders" because of following StandardError
-#   Unknown type 'reference' for column 'order_state'
+#   Unknown type 'reference' for column 'order_state_id'
 
   create_table "provinces", force: :cascade do |t|
     t.string "name"
