@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_013049) do
+ActiveRecord::Schema.define(version: 2021_04_13_204352) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.string "author_type"
+    t.integer "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -21,13 +47,15 @@ ActiveRecord::Schema.define(version: 2021_04_13_013049) do
 # Could not dump table "books" because of following StandardError
 #   Unknown type 'reference' for column 'author_id'
 
-  create_table "books_orders", id: false, force: :cascade do |t|
+  create_table "books_orders", force: :cascade do |t|
     t.integer "book_id", null: false
     t.integer "order_id", null: false
-    t.decimal "book_price", precision: 5, scale: 2
-    t.decimal "pst", precision: 5, scale: 2
-    t.decimal "gst", precision: 5, scale: 2
-    t.decimal "hst", precision: 5, scale: 2
+    t.decimal "price", precision: 5, scale: 2
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_books_orders_on_book_id"
+    t.index ["order_id"], name: "index_books_orders_on_order_id"
   end
 
 # Could not dump table "customers" because of following StandardError
@@ -54,4 +82,6 @@ ActiveRecord::Schema.define(version: 2021_04_13_013049) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "books_orders", "books"
+  add_foreign_key "books_orders", "orders"
 end
