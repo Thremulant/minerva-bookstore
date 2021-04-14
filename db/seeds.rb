@@ -102,11 +102,6 @@ def generate_content()
   all_books = []
   100.times do |index|
     book_name = Faker::Book.unique.title
-
-    # book_data = get_data_url(`http://openlibrary.org/search.json?title=#{book_name.downcase.gsub!(' ', '+')}`)
-    # puts
-
-
     new_book = Book.find_or_create_by(
       name: book_name,
       author: all_authors.sample,

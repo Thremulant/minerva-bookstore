@@ -5,7 +5,7 @@ ActiveAdmin.register Book do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :price, :description, :pages, :new, :author_id, :genre_id
+  # permit_params +:name, :price, :description, :pages, :new, :author_id, :genre_id
   #
   # or
   #
@@ -14,5 +14,6 @@ ActiveAdmin.register Book do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
+  permit_params :name, :price, :description, :pages, :new, :image
 end
