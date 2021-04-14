@@ -2,7 +2,32 @@
 # CLEAN ALL
 # rake db:drop db:create db:migrate VERSION=0
 require 'faker'
+require 'json'
+require 'pp'
 
+def get_data_url(url)
+  # puts url
+  uri = URI(url)
+  res = Net::HTTP.get(uri)
+  json_res = JSON.parse(res)
+end
+
+def get_cover(book_name)
+  book_cover = ''
+  book_data = get_data_url('http://openlibrary.org/search.json?title=' + I18n.transliterate(book_name.downcase.gsub(/[^a-zA-Z ]/,'').gsub!(' ', '+')))
+  if (book_data['docs'].size != 0)
+    # && book_data['docs'][0]['cover_i'] != nil? && book_data['docs'][0]['cover_i'] != '' )
+    # puts book_data['docs'][0]['cover_i']
+    if (book_data['docs'][0].key?("cover_i"))
+      # puts book_data['docs'][0]['cover_i']
+      book_cover = "http://covers.openlibrary.org/b/id/" + book_data['docs'][0]['cover_i'].to_s + "-L.jpg"
+    else
+      book_cover = ''
+    end
+  else
+    book_cover = ''
+  end
+end
 
 def delete_all_content()
   OrderState.destroy_all
@@ -76,21 +101,30 @@ def generate_content()
 
   all_books = []
   100.times do |index|
+    book_name = Faker::Book.unique.title
+
+    # book_data = get_data_url(`http://openlibrary.org/search.json?title=#{book_name.downcase.gsub!(' ', '+')}`)
+    # puts
+
+
     new_book = Book.find_or_create_by(
-      name: Faker::Book.unique.title,
+      name: book_name,
       author: all_authors.sample,
       genre: all_genres.sample,
       price: Faker::Number.decimal(l_digits: 2),
       description: Faker::GreekPhilosophers.quote,
-      pages: Faker::Number.number(digits: 3))
+      pages: Faker::Number.number(digits: 3),
+      image: get_cover(book_name))
     all_books << new_book
   end
 
   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 end
 
-# delete_all_content()
-# generate_content()
+
+
+delete_all_content()
+generate_content()
 
 
 

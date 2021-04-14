@@ -67,3 +67,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'bootstrap', '~> 5.0.0.beta2'
 
 gem 'jquery-rails'
+
+gem 'i18n'

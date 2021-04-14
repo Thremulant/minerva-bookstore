@@ -282,6 +282,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   faker!
+  i18n
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
