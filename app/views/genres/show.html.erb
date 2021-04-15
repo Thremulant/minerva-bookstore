@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_genre_path(@genre) %> |
-<%= link_to 'Back', genres_path %>
+<div class='genre-img'>
+  <%= image_tag @current_genre.image, class:'img-fluid' %>
+</div>
+<div class='container p-3'>
+  <div class='bg-white h-100 p-3 row'>
+    <h2><%= @current_genre.name%></h2>
+    <%  @books.each do |book| %>
+      <%= render partial:'cover', locals:{book: book}%>
+    <%end%>
+  </div>
+</div>
+<%# <%= link_to 'Edit', edit_genre_path(@genre) %>
+<%# <%= link_to 'Back', genres_path %>

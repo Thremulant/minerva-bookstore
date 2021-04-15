@@ -9,7 +9,7 @@
       <h6>Categories</h6>
       <% @genres.each do |genre|%>
         <div class="input-group mb-3">
-          <%= link_to genre.name, `/books?q%5Bgenre_id_eq%5D=#{genre.id}&commit=Filter` %>
+          <%= link_to genre.name, genre_path(genre.id)%>
         </div>
       <%end%>
     <% end %>
