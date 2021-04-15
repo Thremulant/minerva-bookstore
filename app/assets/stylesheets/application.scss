@@ -13,3 +13,11 @@
  */
 
 @import "bootstrap";
+.mv-cover-img {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
