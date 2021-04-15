@@ -1,15 +1,18 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.all.includes(:author, :genre)
     @q = @books.ransack(params[:q])
-    @search = @q.result(distinct: true).order(:new).page params[:page]
+    @search = @q.result.order(:new).page(params[:page]).per(20)
+
+    @genres = Genre.all
   end
 
   # GET /books/1 or /books/1.json
-  def show; end
+  def show
+    @book = Book.find(params[:id])
+  end
 
   # GET /books/new
   def new

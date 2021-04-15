@@ -15,11 +15,22 @@
 @import "bootstrap";
 .mv-cover-img {
   width: 100%;
-  height: 280px;
+  height: 210px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.mv-cover-img-large {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & img {
+    width: 100%;
+  }
 }
 
 .km-custom-nav {
