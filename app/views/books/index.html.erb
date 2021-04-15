@@ -9,24 +9,22 @@
       <h6>Categories</h6>
       <% @genres.each do |genre|%>
         <div class="input-group mb-3">
-          <%# <%= sort_link(@q, :genre_name_eq = 'Realistic fiction') do %>
-            <%= genre.name %>
-            <%# <% end %>
-          </div>
-        <%end%>
-      <% end %>
+          <%= link_to genre.name, `/books?q%5Bgenre_id_eq%5D=#{genre.id}&commit=Filter` %>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
+  <div class='col-sm-9  py-4'>
+    <div class='row d-flex flex-row justify-content-center align-items-center km-custom-nav'>
+      <%= paginate @search%>
     </div>
-    <div class='col-sm-9  py-4'>
-      <div class='row d-flex flex-row justify-content-center align-items-center km-custom-nav'>
-        <%= paginate @search%>
-      </div>
-      <div class="row row-cols-5 g-4 py-4 mb-4">
-        <% @search.each do |book| %>
-          <%= render partial: "cover", locals: {book: book}   %>
-        <%end%>
-      </div>
-      <div class='row d-flex flex-row justify-content-center align-items-center km-custom-nav'>
-        <%= paginate @search%>
-      </div>
+    <div class="row row-cols-5 g-4 py-4 mb-4">
+      <% @search.each do |book| %>
+        <%= render partial: "cover", locals: {book: book}   %>
+      <%end%>
+    </div>
+    <div class='row d-flex flex-row justify-content-center align-items-center km-custom-nav'>
+      <%= paginate @search%>
     </div>
   </div>
+</div>

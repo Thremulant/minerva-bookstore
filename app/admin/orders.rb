@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-  permit_params :name, :subtotal, :total, :pst, :gst, :hst, :customer, :books, :order_state,
+  permit_params :name, :subtotal, :total, :pst, :gst, :hst, :customer_id, :books, :order_state_id,
                 all_books: %i[id name _destroy]
 
   # form do |f|
