@@ -285,6 +285,7 @@ DEPENDENCIES
   i18n
   jbuilder (~> 2.7)
   jquery-rails
+  kaminari
   listen (~> 3.3)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
