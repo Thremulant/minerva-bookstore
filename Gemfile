@@ -69,3 +69,5 @@ gem 'jquery-rails'
 gem 'i18n'
 
 gem 'kaminari'
+
+gem 'ransack'

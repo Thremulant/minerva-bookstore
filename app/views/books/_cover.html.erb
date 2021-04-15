@@ -1,14 +1,16 @@
 <div class="col">
-  <div class="card" >
-    <div class="mv-cover-img">
-      <% if book.image != '' %>
-        <%= image_tag book.image, :class => 'img-fluid' %>
-      <% else %>
-        <%= image_tag ("/images/no_cover.jpg"), :class => 'img-fluid' %>
-      <% end %>
+  <a href="<%= book_path(book) %>" class="link-dark">
+    <div class="card" >
+      <div class="mv-cover-img">
+        <% if book.image != '' %>
+          <%= image_tag book.image, :class => 'img-fluid' %>
+        <% else %>
+          <%= image_tag ("/images/no_cover.jpg"), :class => 'img-fluid' %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= book.name %></h5>
+      </div>
     </div>
-    <div class="card-body">
-      <h5 class="card-title"><%= book.name %></h5>
-    </div>
-  </div>
+  </a>
 </div>

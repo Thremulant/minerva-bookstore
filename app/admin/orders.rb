@@ -30,22 +30,22 @@ ActiveAdmin.register Order do
   #     # b.input :name
   #   # end
   #   # end
+  # # end
+  # show do
+  #   panel 'Books list' do
+  #     table_for order.books_orders.all do
+  #       column :name
+  #       column :price
+  #     end
+  #   end
   # end
-  show do
-    panel 'Books list' do
-      table_for order.books_orders.all do
-        column :name
-        column :price
-      end
-    end
-  end
-  sidebar 'Details', only: :show do
-    form do |f|
-      f.semantic_errors
-      f.inputs
-      f.actions # shows errors on :base
-    end
-  end
+  # sidebar 'Details', only: :show do
+  #   form do |f|
+  #     f.semantic_errors
+  #     f.inputs
+  #     f.actions # shows errors on :base
+  #   end
+  # end
   # sidebar 'Details' do
   #   form do |f|
   #     f.semantic_errors
