@@ -17,8 +17,10 @@
           <a class="btn btn-outline-warning me-2" href='/planets'><strong>Planets</strong></a>
           <a class="btn btn-outline-warning me-2" href='/races'><strong>Species</strong></a> %>
           <%# <%= show_svg('shopping-bag.svg') %>
-          <a class="btn btn-light me-2" href=''><strong>Cart</strong>
-            <span class="badge bg-secondary">4</span></a>
+          <a class="btn btn-light me-2" href="/cart"><strong>Cart</strong>
+            <% if session[:cart].size > 0 %>
+              <span class="badge bg-danger"> <%= session[:cart].size %></span></a>
+          <%end%>
           <a class="btn btn-outline-info" href='/about'>About</a>
         </div>
       </div>
@@ -28,8 +30,12 @@
         <%= render_breadcrumbs :separator => ' / ' %>
       </div>
     </div>
+    <%# <div class='container-fluid bg-danger'>
+      <div class='container p-1 mv-breadcrumbs'>
+        <%= debug session[:cart] %>
+    <%# </div> %>
+    <%# </div> %>
     <div class='container p-0 h-100'>
-      <% debug cart %>
       <%= yield %>
     </div>
   </body>

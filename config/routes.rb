@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :genres
   resources :books
-  resources :cart, only: %i[create destroy]
+  resources :cart, only: %i[create destroy index]
   root 'books#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

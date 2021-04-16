@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :cart
   before_action :user
 
+  helper_method :cart
+
   add_breadcrumb 'Home', :root_path
 
   def initialize_session

@@ -1,0 +1,11 @@
+<div class='row h-100'>
+  <div class='col-sm-8 py-4'>
+    <h5>Order details</h5>
+    <% @items.each do |id|%>
+      <% get_book(id) %>
+    <%end%>
+  </div>
+  <div class='col-sm-3 bg-light  py-4'>
+    <h5>User details</h5>
+  </div>
+</div>

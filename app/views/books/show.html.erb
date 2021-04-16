@@ -15,6 +15,13 @@
     <h6 ><strong>Price: </strong><%= @book.price %></h6>
     <h6 ><strong>Pages: </strong><%= @book.pages %></h6>
     <p><strong>Description: </strong><br/>
-      <%= @book.description %></p>
+      <%= @book.description %>
+    </p>
+    <div class='d-flex justify-flex-start mb-3'>
+      <%= form_with url: cart_index_path do%>
+        <%= hidden_field_tag(:id, @book.id) %>
+        <%= button_tag "$ #{@book.price}", class:"btn btn-primary" %>
+      <%end%>
+    </div>
   </div>
 </div>
