@@ -16,11 +16,20 @@
           <%# <a class="btn btn-outline-warning me-2" href='/characters'><strong>Characters</strong></a>
           <a class="btn btn-outline-warning me-2" href='/planets'><strong>Planets</strong></a>
           <a class="btn btn-outline-warning me-2" href='/races'><strong>Species</strong></a> %>
-          <a class="btn btn-light" href='/about'>About</a>
+          <%# <%= show_svg('shopping-bag.svg') %>
+          <a class="btn btn-light me-2" href=''><strong>Cart</strong>
+            <span class="badge bg-secondary">4</span></a>
+          <a class="btn btn-outline-info" href='/about'>About</a>
         </div>
       </div>
     </nav>
-    <div class='container-fluid p-0 h-100'>
+    <div class='container-fluid bg-dark'>
+      <div class='container p-1 mv-breadcrumbs'>
+        <%= render_breadcrumbs :separator => ' / ' %>
+      </div>
+    </div>
+    <div class='container p-0 h-100'>
+      <% debug cart %>
       <%= yield %>
     </div>
   </body>

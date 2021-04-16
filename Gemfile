@@ -71,3 +71,5 @@ gem 'i18n'
 gem 'kaminari'
 
 gem 'ransack'
+
+gem "breadcrumbs_on_rails"

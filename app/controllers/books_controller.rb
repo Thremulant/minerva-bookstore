@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
+
   # GET /books or /books.json
   def index
     @books = Book.all.includes(:author, :genre)
@@ -12,6 +13,9 @@ class BooksController < ApplicationController
   # GET /books/1 or /books/1.json
   def show
     @book = Book.find(params[:id])
+
+    add_breadcrumb @book.genre.name, @book.genre
+    add_breadcrumb @book.name, :book_path
   end
 
   # GET /books/new
@@ -69,5 +73,13 @@ class BooksController < ApplicationController
   # Only allow a list of trusted parameters through.
   def book_params
     params.fetch(:book, {})
+  end
+
+  def get_book_path
+    Book.find(params[:id]).name
+  end
+
+  def get_genre_path
+    Book.find(params[:id]).genre
   end
 end

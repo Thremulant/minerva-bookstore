@@ -13,6 +13,7 @@
  */
 
 @import "bootstrap";
+
 .mv-cover-img {
   width: 100%;
   height: 210px;
@@ -42,4 +43,24 @@
 .genre-img {
   width: 100%;
   height: 180px;
+  z-index: -20;
+  img {
+    z-index: -20;
+    position: relative;
+    width: 100%;
+  }
+}
+
+.mv-bg-white {
+  background-color: #ffffffb0;
+  border-radius: 1em;
+  z-index: 20;
+}
+
+.mv-breadcrumbs {
+  color: white;
+  a {
+    text-decoration: none;
+    color: aqua;
+  }
 }

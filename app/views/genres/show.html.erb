@@ -1,12 +1,16 @@
 <div class='genre-img'>
   <%= image_tag @current_genre.image, class:'img-fluid' %>
 </div>
-<div class='container p-3'>
-  <div class='bg-white h-100 p-3 row'>
-    <h2><%= @current_genre.name%></h2>
-    <%  @books.each do |book| %>
-      <%= render partial:'cover', locals:{book: book}%>
-    <%end%>
+<div class='container'>
+  <div class='row'>
+    <div class='col-10 mx-auto  py-4 px-3 mv-bg-white '>
+      <h2 class='mb-4 text-primary'><%= @current_genre.name%></h2>
+      <div class="row row-cols-5 g-4 py-4 mb-4">
+        <%  @books.each do |book| %>
+          <%= render partial:'partials/book', locals:{book: book}%>
+        <%end%>
+      </div>
+    </div>
   </div>
 </div>
 <%# <%= link_to 'Edit', edit_genre_path(@genre) %>

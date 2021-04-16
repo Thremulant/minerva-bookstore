@@ -10,6 +10,8 @@ class GenresController < ApplicationController
   def show
     @current_genre = Genre.find(params[:id])
     @books = @current_genre.books
+
+    add_breadcrumb @current_genre.name, :genre_path
   end
 
   # GET /genres/new

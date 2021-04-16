@@ -20,7 +20,7 @@
     </div>
     <div class="row row-cols-5 g-4 py-4 mb-4">
       <% @search.each do |book| %>
-        <%= render partial: "cover", locals: {book: book}   %>
+        <%= render partial: "partials/book", locals: {book: book}   %>
       <%end%>
     </div>
     <div class='row d-flex flex-row justify-content-center align-items-center km-custom-nav'>
